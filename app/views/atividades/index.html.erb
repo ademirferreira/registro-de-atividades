@@ -1,12 +1,13 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title do %>
+  <p>Lista de Atividades do dia <%= DateTime.now.strftime("%x") %></p>
+  <p>Total de horas: <%= @atividades.pluck(:carga_horaria).sum %>h/a</p>
+<% end %>
 
-<h1>Atividades</h1>
-
-<table>
+<table class="table is-striped is-hoverable is-fullwidth">
   <thead>
     <tr>
       <th>Data</th>
-      <th>Descricao</th>
+      <th>Descrição</th>
       <th>Ferramenta</th>
       <th>Carga horaria</th>
       <th colspan="3"></th>
@@ -16,13 +17,21 @@
   <tbody>
     <% @atividades.each do |atividade| %>
       <tr>
-        <td><%= atividade.data %></td>
-        <td><%= atividade.descricao %></td>
+        <td><%= atividade.data.strftime("%d/%m/%y") %></td>
+        <td width="500"><%= atividade.descricao %></td>
         <td><%= atividade.ferramenta %></td>
-        <td><%= atividade.carga_horaria %></td>
-        <td><%= link_to 'Show', atividade %></td>
-        <td><%= link_to 'Edit', edit_atividade_path(atividade) %></td>
-        <td><%= link_to 'Destroy', atividade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="has-text-centered"><%= atividade.carga_horaria %>h/a</td>
+        <td>
+          <%= link_to atividade, class: 'button is-rounded is-small is-info is-outlined' do %>
+            <i class="fa fa-eye"></i>
+          <% end %>
+          <%= link_to edit_atividade_path(atividade), class: 'button is-rounded is-small is-success is-outlined' do %>
+            <i class="fa fa-edit"></i>
+          <% end %>
+          <%= link_to atividade, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'button is-rounded is-small is-danger is-outlined' do %>
+            <i class="fa fa-trash is-danger"></i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +39,3 @@
 
 <br>
 
-<%= link_to 'New Atividade', new_atividade_path %>
