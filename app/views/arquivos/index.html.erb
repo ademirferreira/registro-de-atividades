@@ -1,0 +1,29 @@
+<div class="columns is-centered mt-6">
+  <div class="column is-half">
+    <% @atividades.each do |day, atividades| %>
+      <h3 class="is-size-4 has-text-weight-bold mb-5 has-text-centered">
+        Atividades do dia <%= day%>
+      </h3>
+      <nav class="level is-mobile">
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Carga horária total</p>
+            <p class="title"><%= atividades.pluck(:carga_horaria).sum %>h/a</p>
+          </div>
+        </div>        
+      </nav>
+      <% atividades.each do |atividade| %>
+        <%= link_to atividade_path(atividade) do %>
+        <div class="card">
+          <div class="card-content mb-4">
+            <strong><%= atividade.descricao %></strong><br>
+            <strong>Data:</strong> <%= atividade.data.strftime("%d/%m/%y") %>,
+            <strong>Ferramenta:</strong> <%= atividade.ferramenta %>,
+            <strong>Carga Horária:</strong> <%= atividade.carga_horaria %>h/a       
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
