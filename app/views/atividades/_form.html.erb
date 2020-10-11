@@ -2,7 +2,7 @@
   <% if atividade.errors.any? %>
     <div class="message is-danger">
       <div class="message-header">
-        <p><%= pluralize(atividade.errors.count, "error") %> prohibited this atividade from being saved:</p>      
+        <p><%= pluralize(atividade.errors.count, "erros") %> impediram de adicionar a atividade.</p>      
       </div>
       <div class="message-body">      
         <ul>
