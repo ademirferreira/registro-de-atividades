@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_10_10_220112) do
   enable_extension "plpgsql"
 
   create_table "atividades", force: :cascade do |t|
-    t.date "data"
+    t.datetime "data"
     t.string "descricao"
     t.string "ferramenta"
     t.integer "carga_horaria"
