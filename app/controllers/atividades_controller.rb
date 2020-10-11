@@ -4,7 +4,7 @@ class AtividadesController < ApplicationController
   # GET /atividades
   # GET /atividades.json
   def index
-    @atividades = Atividade.all
+    @atividades = Atividade.where("data >= ?", Date.today)    
   end
 
   # GET /atividades/1
@@ -28,7 +28,7 @@ class AtividadesController < ApplicationController
 
     respond_to do |format|
       if @atividade.save
-        format.html { redirect_to @atividade, notice: 'Atividade was successfully created.' }
+        format.html { redirect_to @atividade, notice: 'Atividade adicionada com sucesso.' }
         format.json { render :show, status: :created, location: @atividade }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class AtividadesController < ApplicationController
   def update
     respond_to do |format|
       if @atividade.update(atividade_params)
-        format.html { redirect_to @atividade, notice: 'Atividade was successfully updated.' }
+        format.html { redirect_to @atividade, notice: 'Atividade atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @atividade }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class AtividadesController < ApplicationController
   def destroy
     @atividade.destroy
     respond_to do |format|
-      format.html { redirect_to atividades_url, notice: 'Atividade was successfully destroyed.' }
+      format.html { redirect_to atividades_url, notice: 'Atividade excluída com sucesso.' }
       format.json { head :no_content }
     end
   end
