@@ -1,0 +1,32 @@
+<section class="hero is-link is-small">
+  <div class="hero-head">
+    <nav class="navbar">    
+      <div class="container">
+        <div class="navbar-brand">
+          <%= link_to root_path, class: "navbar-item" do %>
+            <span class="has-text-weight-bold is-size-4 ml-4">Registro de Atividades</span>
+          <% end %>
+        </div>
+        <div class="navbar-menu">
+          <div class="navbar-end">
+          <span class="navbar-item">
+            <%= link_to "Nova Atividade",new_atividade_path, class: "button is-success" %>                  
+          </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        <% if content_for(:title) %>
+          <%= yield :title %>
+        <% else %>
+        Registro de Atividades  
+        <% end %>
+      </h1>
+    </div>
+  </div>
+</section>
