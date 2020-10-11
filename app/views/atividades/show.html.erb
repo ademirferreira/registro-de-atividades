@@ -1,24 +1,19 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Data:</strong>
-  <%= @atividade.data %>
-</p>
-
-<p>
-  <strong>Descricao:</strong>
-  <%= @atividade.descricao %>
-</p>
-
-<p>
-  <strong>Ferramenta:</strong>
-  <%= @atividade.ferramenta %>
-</p>
-
-<p>
-  <strong>Carga horaria:</strong>
-  <%= @atividade.carga_horaria %>
-</p>
-
-<%= link_to 'Edit', edit_atividade_path(@atividade) %> |
-<%= link_to 'Back', atividades_path %>
+<div class="columns mt-6 is-centered">  
+    <div class="column is-one-quarter">
+      <div class="card">
+        <div class="card-content">
+          <div class="content">
+            <p><span class="has-text-weight-bold">Data:</span> <%= @atividade.data.strftime("%d/%m/%y") %></p>  
+            <p><span class="has-text-weight-bold">Descrição:</span> <%= @atividade.descricao %></p>  
+            <p><span class="has-text-weight-bold">Ferramentas:</span> <%= @atividade.ferramenta %></p>  
+            <p><span class="has-text-weight-bold">Carga Horária:</span> <%= @atividade.carga_horaria %></p>
+          </div>
+        </div>
+          <div class="card-footer">            
+            <%= link_to 'Editar', edit_atividade_path(@atividade), class: "card-footer-item" %>
+            <%= link_to 'Excluir', atividade_path(@atividade),method: :delete, data: {confirm: "Voce tem certeza?"}, class: "card-footer-item" %>         
+          </div>
+      </div>
+    </div>
+  
+</div>
