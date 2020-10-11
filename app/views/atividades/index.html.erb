@@ -1,8 +1,8 @@
 <% content_for :title do %>
-  <p>Lista de Atividades do dia <%= DateTime.now.strftime("%x") %></p>
+  <p>Lista de Atividades do dia <%= DateTime.now.strftime("%e/%m") %></p>
   <p>Total de horas: <%= @atividades.pluck(:carga_horaria).sum %>h/a</p>
 <% end %>
-
+<% if @atividades.present? %>
 <table class="table is-striped is-hoverable is-fullwidth">
   <thead>
     <tr>
@@ -36,6 +36,9 @@
     <% end %>
   </tbody>
 </table>
+<% end %>
 
-<br>
+<div class="columns is-centered mt-6">
+  <%= link_to "Ver todas as atividades", arquivos_index_path, class: "button is-link is-outlined is-centered"%>
+</div> 
 
