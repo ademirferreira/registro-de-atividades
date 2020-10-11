@@ -1,37 +1,40 @@
 <%= form_with(model: atividade, local: true) do |form| %>
   <% if atividade.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(atividade.errors.count, "error") %> prohibited this atividade from being saved:</h2>
-
-      <ul>
-        <% atividade.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <div class="message is-danger">
+      <div class="message-header">
+        <p><%= pluralize(atividade.errors.count, "error") %> prohibited this atividade from being saved:</p>      
+      </div>
+      <div class="message-body">      
+        <ul>
+          <% atividade.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
   <div class="field">
-    <%= form.label :data %>
-    <%= form.date_field :data %>
+    <label class="label">Data:</label>
+    <%= form.date_field :data, class: 'input' %>
   </div>
 
   <div class="field">
-    <%= form.label :descricao %>
-    <%= form.text_area :descricao %>
+    <label class="label">Descrição:</label>
+    <%= form.text_area :descricao, class: 'textarea' %>
   </div>
 
   <div class="field">
-    <%= form.label :ferramenta %>
-    <%= form.text_field :ferramenta %>
+    <label class="label">Ferramentas:</label>
+    <%= form.text_field :ferramenta, class: 'input' %>
   </div>
 
   <div class="field">
-    <%= form.label :carga_horaria %>
-    <%= form.number_field :carga_horaria %>
+    <label class="label">Carga Horária:</label>
+    <%= form.number_field :carga_horaria, class: 'input' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "button is-success" %>
   </div>
 <% end %>
