@@ -1,4 +1,4 @@
-<div class="columns mt-6 is-centered">  
+<div class="columns mt-6 is-centered">
     <div class="column is-one-quarter">
       <div class="card">
         <div class="card-content">
@@ -9,9 +9,9 @@
             <p><span class="has-text-weight-bold">Carga Horária:</span> <%= @atividade.carga_horaria %></p>
           </div>
         </div>
-          <div class="card-footer">            
+          <div class="card-footer">
             <%= link_to 'Editar', edit_atividade_path(@atividade), class: "card-footer-item" %>
-            <%= link_to 'Excluir', atividade_path(@atividade),method: :delete, data: {confirm: "Voce tem certeza?"}, class: "card-footer-item" %>         
+            <%= link_to 'Excluir', atividade_path(@atividade),method: :delete, data: {confirm: "Voce tem certeza?"}, class: "card-footer-item has-text-danger-dark" %>
           </div>
       </div>
     </div>

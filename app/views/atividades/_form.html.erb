@@ -4,7 +4,7 @@
       <div class="message-header">
         <p><%= pluralize(atividade.errors.count, "erros") %> impediram de adicionar a atividade.</p>      
       </div>
-      <div class="message-body">      
+      <div class="message-body">
         <ul>
           <% atividade.errors.full_messages.each do |message| %>
             <li><%= message %></li>

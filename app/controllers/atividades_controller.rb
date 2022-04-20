@@ -1,64 +1,44 @@
 class AtividadesController < ApplicationController
   before_action :set_atividade, only: [:show, :edit, :update, :destroy]
 
-  # GET /atividades
-  # GET /atividades.json
   def index
     @atividades = Atividade.where("data >= ?", Date.today)    
   end
 
-  # GET /atividades/1
-  # GET /atividades/1.json
   def show
   end
 
-  # GET /atividades/new
   def new
     @atividade = Atividade.new
   end
 
-  # GET /atividades/1/edit
   def edit
   end
 
-  # POST /atividades
-  # POST /atividades.json
   def create
     @atividade = Atividade.new(atividade_params)
-
-    respond_to do |format|
+ 
       if @atividade.save
-        format.html { redirect_to @atividade, notice: 'Atividade adicionada com sucesso.' }
-        format.json { render :show, status: :created, location: @atividade }
+        redirect_to @atividade, notice: 'Atividade adicionada com sucesso.'
       else
-        format.html { render :new }
-        format.json { render json: @atividade.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
+    
   end
 
-  # PATCH/PUT /atividades/1
-  # PATCH/PUT /atividades/1.json
   def update
-    respond_to do |format|
+    
       if @atividade.update(atividade_params)
-        format.html { redirect_to @atividade, notice: 'Atividade atualizada com sucesso.' }
-        format.json { render :show, status: :ok, location: @atividade }
+        redirect_to @atividade, notice: 'Atividade atualizada com sucesso.'
       else
-        format.html { render :edit }
-        format.json { render json: @atividade.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
-  # DELETE /atividades/1
-  # DELETE /atividades/1.json
+
   def destroy
     @atividade.destroy
-    respond_to do |format|
-      format.html { redirect_to atividades_url, notice: 'Atividade excluída com sucesso.' }
-      format.json { head :no_content }
-    end
+      redirect_to atividades_url, alert: 'Atividade excluída com sucesso.'
   end
 
   private
